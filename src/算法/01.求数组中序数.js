@@ -24,6 +24,28 @@ var pivotIndex = function(nums) {
   return result === -1 ? result : result -1
 };
 
+/**
+ * 最佳思路
+ */
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var pivotIndex1 = function(nums) {
+  const sum = nums.reduce( (a,b)=> a+b, 0);
+  let leftSum = 0;
+  for( let i=0, len=nums.length; i< len;i++){
+      if(leftSum == sum - nums[i] - leftSum) return i
+      leftSum += nums[i];
+  }
+  return -1
+};
+
+// 作者：luoboo
+// 链接：https://leetcode-cn.com/problems/find-pivot-index/solution/xun-zhao-shu-zu-de-zhong-xin-suo-yin-jian-dan-yi-d/
+// 来源：力扣（LeetCode）
+// 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
 // 测试用例
 const arr1 = [1,7,3,6,5,6]
 // console.log(pivotIndex(arr1)) // 3
