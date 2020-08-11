@@ -16,7 +16,7 @@ var findStr1 = function (str) {
       // 如果之前存在该字符，则从当前i位置重新计数
       maxLen = len > maxLen ? len : maxLen
       char = str[i]
-      len = 0
+      len = 1
     }
     // 循环到最后自动退出捕获
     if (i === str.length - 1) {
@@ -28,7 +28,7 @@ var findStr1 = function (str) {
 
 
 // 测试用例
-let str1 = 'abcddefghtiop' // 3
+let str1 = 'abcddefgh' // 5
 let str2 = 'bbbbb' // 1
 
 console.log(findStr1(str1))
