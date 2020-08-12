@@ -17,6 +17,7 @@ var findStr1 = function (str) {
       maxLen = len > maxLen ? len : maxLen
       char = str[i]
       len = 1
+      break
     }
     // 循环到最后自动退出捕获
     if (i === str.length - 1) {
@@ -30,8 +31,9 @@ var findStr1 = function (str) {
 // 测试用例
 let str1 = 'abcddefgh' // 5
 let str2 = 'bbbbb' // 1
-
+console.time('找子串')
 console.log(findStr1(str1))
+console.timeEnd('找子串')
 
 // 1、将所有连续子串找出，挑出长度最长的那个
 // 2、如何快速找出连续子串--->哈希映射分割
