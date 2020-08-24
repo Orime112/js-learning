@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>节流和防抖测试</title>
+</head>
+<body>
+  <div id="times">0</div>
+  <button id="btn">点击增加</button>
+  <script src="./01.debounce.js"></script>
+  <script src="./02.throttle.js"></script>
+  <script>
+    const btn = document.getElementById('btn')
+    const times = document.getElementById('times')
+    let count = 0
+    function increase(){
+      times.innerText = ++count
+    }
+    btn.onclick = throttle(increase, 1000)
+  </script>
+</body>
+</html>

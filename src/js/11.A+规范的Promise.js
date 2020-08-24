@@ -91,6 +91,19 @@
 
   globalThis.MyPromise = MyPromise
 
+  // 等同于：
+  // window.MyPromise = MyPromise
+  // global.MyPromise = MyPromise
+
+  // 正确但繁琐的写法
+  // if(typeof window !== 'undefined') {
+  //   window.MyPromise = MyPromise
+  // }
+  // if(typeof global !== 'undefined') {
+  //   global.MyPromise = MyPromise
+  // }
+  
+
 })()
 
 
