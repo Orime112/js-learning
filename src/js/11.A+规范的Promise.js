@@ -27,9 +27,7 @@
           _this.resolveFunc.call(_this, value) :
           _this.rejectFunc.call(_this, value)
       }, 0)
-
     }
-
     // 创建实例则立即执行executor
     try {
       executor(function (value) {
@@ -79,15 +77,28 @@
 
   // 实现静态属性resolve和reject
   MyPromise.resolve = function (value) {
-    return new Promise(function (value) {
-      resolve(value)
+    return new Promise(function (res) {
+      res(value)
     })
   }
   MyPromise.reject = function (reason) {
-    return new Promise(function (_, reject) {
-      reject(reason)
+    return new Promise(function (_, rej) {
+      rej(reason)
     })
   }
+
+  // 实现all静态方法
+  // MyPromise.all = function(promiseArr){
+  //   return new MyPromise((resolve, reject) => {
+  //     const values = []
+  //     for(let i = 0; i < promiseArr.lenght; i++){
+  //       (function (i){
+  //         let promi = promiseArr[i]
+  //         if(promi instanceof MyPromise) promi = 
+  //       })(i)
+  //     }
+  //   })
+  // }
 
   globalThis.MyPromise = MyPromise
 
