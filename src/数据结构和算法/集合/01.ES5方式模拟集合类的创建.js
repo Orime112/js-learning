@@ -36,6 +36,14 @@ class MySet{
   values(){
     return Object.values(this.item)
   }
+  /** 求解并集 */
+  union(otherSet){
+    const unionSet = new MySet()
+    this.values().forEach(item => unionSet.add(item))
+    otherSet.values().forEach(item => unionSet.add(item))
+    return unionSet
+
+  }
 }
 
 const set = new MySet();
