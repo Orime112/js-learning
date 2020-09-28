@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>margin padding相抵消方案实现等高布局</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #parent{
+      overflow: hidden;
+    }
+    #left,
+    #right{
+      float: left;
+      width: 600px;
+      padding-bottom: 9999px;
+      margin-bottom: -9999px;
+    }
+    #left{
+      background-color: chocolate;
+    }
+    #right{
+      background-color: chartreuse;
+    }
+  </style>
+</head>
+<body>
+  <div id="parent">
+    <div id="left">根据《红皮书》，艾萨姆布拉斯三世之子班多布拉斯·图克（吼牛[插图]）有四呎五吋高</div>
+    <div id="right">霍比特人不是个引人注目的种族，但他们的历史十分悠久，过去的人数比现在更多。他们热爱和平、安宁，以及犁垦良好的土地，最喜出没的地方是秩序井然、耕种得宜的乡野。尽管他们用起工具得心应手，但他们不理解也不喜欢比打铁风箱、水力磨坊和手动织布机更复杂的机械，过去如此，现在亦然。即便是在古老时日，他们会照惯例躲开“大种人”——这是他们对我们的称呼——而如今他们惊恐地避开我们，越来越难被遇到。他们听觉灵敏，眼光锐利，虽说通常很胖，没有必要的话行动也不着急，但他们的动作敏捷又灵巧。当那些他们不想遇上的大号种族碰巧笨手笨脚地走过时，他们能悄然迅速遁去，这种能力他们天生就有，且发展到了人类觉得这是魔法的地步。但实际上，霍比特人从来没有学习过任何魔法，他们的逃遁能力纯系一种专门技能，来自遗传与练习，以及和大地的亲密联系，这些都是那些更大也更笨拙的种族模仿不了的。</div>
+  </div>
+</body>
+</html>
