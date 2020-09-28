@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>table实现等分布局</title>
+    <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+      #parent {
+        width: 100%;
+        display: table;
+      }
+      #col1,
+      #col2,
+      #col3,
+      #col4,
+      #col5 {
+        height: 300px;
+        display: table-cell;
+      }
+      #col1 {
+        background-color: forestgreen;
+      }
+      #col2 {
+        background-color: aqua;
+      }
+      #col3 {
+        background-color: coral;
+      }
+      #col4 {
+        background-color: navajowhite;
+      }
+      #col5 {
+        background-color: goldenrod;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <div id="col1"></div>
+      <div id="col2"></div>
+      <div id="col3"></div>
+      <div id="col4"></div>
+      <div id="col5"></div>
+      <div id="col3"></div>
+      <div id="col4"></div>
+      <div id="col5"></div>
+    </div>
+  </body>
+</html>
