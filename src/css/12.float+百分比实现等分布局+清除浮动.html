@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>百分比实现等分布局+清除浮动</title>
+    <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .clearfix::after{
+      content: '';
+      clear: both;
+      display: block;
+    }
+    #parent{
+      border: 10px solid #ccc;
+      /* 清除浮动1：加固定高度 */
+      /* height: 300px; */
+      /* 清除浮动2：触发BFC */
+      /* overflow: hidden; */
+      /* 清除浮动3：子浮动元素最后加一个块级元素并具有clear: both属性 */
+      /* 清除浮动4：父元素加伪元素clearfix */
+    }
+      #col1,
+      #col2,
+      #col3,
+      #col4{
+        float: left;
+        height: 300px;
+        width: 25%;
+      }
+      #col1{
+        background-color: forestgreen;
+      }
+      #col2{
+        background-color: aqua;
+      }
+      #col3{
+        background-color: coral;
+      }
+      #col4{
+        background-color: navajowhite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent" class="clearfix">
+      <div id="col1"></div>
+      <div id="col2"></div>
+      <div id="col3"></div>
+      <div id="col4"></div>
+      <!-- <div style="clear: both"></div> -->
+    </div>
+  </body>
+</html>
