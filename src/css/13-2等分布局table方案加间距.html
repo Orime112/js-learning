@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>table实现等分布局</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      #parent-wrapper {
+        margin-left: -10px;
+      }
+      #parent {
+        width: 100%;
+        display: table;
+      }
+      #col1,
+      #col2,
+      #col3,
+      #col4,
+      #col5 {
+        height: 300px;
+        display: table-cell;
+        padding-left: 10px;
+      }
+      #col1 .inner {
+        height: 300px;
+        background-color: forestgreen;
+      }
+      #col2 .inner {
+        height: 300px;
+        background-color: aqua;
+      }
+      #col3 .inner {
+        height: 300px;
+        background-color: coral;
+      }
+      #col4 .inner {
+        height: 300px;
+        background-color: navajowhite;
+      }
+      #col5 .inner {
+        height: 300px;
+        background-color: goldenrod;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent-wrapper">
+      <div id="parent">
+        <div id="col1"><div class="inner"></div></div>
+        <div id="col2"><div class="inner"></div></div>
+        <div id="col3"><div class="inner"></div></div>
+        <div id="col4"><div class="inner"></div></div>
+        <div id="col5"><div class="inner"></div></div>
+      </div>
+    </div>
+  </body>
+</html>

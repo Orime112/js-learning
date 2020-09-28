@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>百分比实现等分布局+清除浮动</title>
+    <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .clearfix::after{
+      content: '';
+      clear: both;
+      display: block;
+    }
+    #parent{
+      /* width: 100%; */
+      border-top: 10px solid #ccc;
+      /* border-left: 10px solid #ccc; */
+      /* 清除浮动1：加固定高度 */
+      /* height: 300px; */
+      /* 清除浮动2：触发BFC */
+      /* overflow: hidden; */
+      /* 清除浮动3：子浮动元素最后加一个块级元素并具有clear: both属性 */
+      /* 清除浮动4：父元素加伪元素clearfix */
+      margin-left: -10px;
+      /* box-sizing: border-box; */
+    }
+      #col1,
+      #col2,
+      #col3,
+      #col4{
+        float: left;
+        height: 300px;
+        width: 25%;
+        box-sizing: border-box;
+        /* border-left: 10px solid #fff; */
+        padding-left: 10px;
+      }
+      #col1 .inner{
+        height: 300px;
+        background-color: forestgreen;
+      }
+      #col2 .inner{
+        height: 300px;
+        background-color: aqua;
+      }
+      #col3 .inner{
+        height: 300px;
+        background-color: coral;
+      }
+      #col4 .inner{
+        height: 300px;
+        background-color: navajowhite;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent" class="clearfix">
+      <div id="col1"><div class="inner"></div></div>
+      <div id="col2"><div class="inner"></div></div>
+      <div id="col3"><div class="inner"></div></div>
+      <div id="col4"><div class="inner"></div></div>
+      <!-- <div style="clear: both"></div> -->
+    </div>
+  </body>
+</html>
