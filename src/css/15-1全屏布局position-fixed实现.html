@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>position-fixed实现固定定位</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        background-color: lightblue;
+        height: 100px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+      .content .left {
+        width: 300px;
+        /* height: 100%; */
+        background-color: chartreuse;
+        position: fixed;
+        left: 0;
+        top: 100px;
+        bottom: 100px;
+      }
+      .content .right {
+        /* height: 100%; */
+        background-color: chocolate;
+        position: fixed;
+        left: 300px;
+        right: 0;
+        top: 100px;
+        bottom: 100px;
+      }
+      footer {
+        background-color: lightslategray;
+        height: 100px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header></header>
+    <div class="content">
+      <div class="left"></div>
+      <div class="right"></div>
+    </div>
+    <footer></footer>
+  </body>
+</html>
