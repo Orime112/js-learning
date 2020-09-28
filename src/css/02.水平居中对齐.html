@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02.水平居中对齐</title>
+  <style>
+    /* .parent{
+      text-align: center;
+      font-size: 0;
+    }
+    .child{
+      font-size: 16px;
+      display: inline-block;
+      width: 300px;
+      height: 300px;
+      background-color: brown;
+    }
+    .inner {
+      width: 20px;
+      height: 20px;
+      background-color: blueviolet;
+    }
+    .inline-parent{
+      text-align: center
+    } */
+    .parent{
+      position: relative;
+      width: 600px;
+      height: 600px;
+      background-color: darkkhaki;
+    }
+    .son{
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background-color: aqua;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="parent">
+    <div class="son"></div>
+  </div>
+</body>
+</html>
