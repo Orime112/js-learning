@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>圣杯布局方案</title>
+    <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #parent{
+      padding-left: 300px;
+      padding-right: 300px;
+    }
+      #center,
+      #left,
+      #right {
+        float: left;
+        height: 400px;
+      }
+      #center {
+        width: 100%;
+        background-color: blueviolet;
+      }
+      #left {
+        width: 300px;
+        background-color: salmon;
+        margin-left: -100%;
+        position: relative;
+        left: -300px;
+      }
+      #right {
+        width: 300px;
+        background-color: olivedrab;
+        margin-right: -300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="parent">
+      <div id="center">彼得帕克在内战后受到了钢铁侠托尼斯塔克的赏识，表面上，彼得进入托尼的公司成为了一名实习生，实际上，他和复仇者联盟的成员们一起接受了各种各样的训练。托尼虽然欣赏彼得的勇敢和正直，却并不认为他目前已经拥有加入复联的实力，他派出了特工哈皮暗中观察，这让十分想证明自己的彼得感到万分焦躁。在对付两个银行劫匪的过程中，彼得发现劫匪们使用的是一种前所未见的新型武器，他孤身一人深入敌</div>
+      <div id="left"></div>
+      <div id="right"></div>
+    </div>
+  </body>
+</html>
