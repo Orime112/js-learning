@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 居中布局公用 */
+.main-md {
+  max-width: 1200px;
+  min-width: 800px;
+  margin: 0 auto;
+}
+
+/* 清除浮动用 */
+.clearfix::after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.header-wrap {
+  width: 100%;
+  height: 80px;
+  background-color: gray;
+}
+
+.header {
+  height: 80px;
+  background-color: coral;
+  display: flex;
+}
+
+.hd-left {
+  flex: 1;
+  height: 80px;
+  background-color: darkgreen;
+  box-sizing: border-box;
+}
+.hd-right {
+  height: 80px;
+  width: 200px;
+  background-color: orchid;
+}
+
+/* logo部分 */
+.logo{
+  margin: 10px auto;
+}
+
+.logo-center-wrap {
+  float: left;
+  height: 80px;
+  width: 100%;
+  background-color: greenyellow;
+}
+
+.logo-center{
+  margin: 0 300px;
+}
+
+.logo-left {
+  float: left;
+  width: 300px;
+  height: 80px;
+  background-color: brown;
+  margin-left: -100%;
+}
+
+.logo-right {
+  float: right;
+  width: 300px;
+  height: 80px;
+  background-color: darkcyan;
+  margin-left: -300px;
+}
+
+/* 广告ad部分 两列布局，子列等分布局 */
+.gad{
+  overflow: hidden;
+}
+.gad-left{
+  float: left;
+  width: 300px;
+  height: 300px;
+  background-color: hotpink;
+  margin-right: 10px;
+}
+
+.gad-right{
+  height: 300px;
+  background-color: chocolate;
+  overflow: hidden;
+}
