@@ -53,11 +53,13 @@ var isValid = function(str){
       }
     }
   }
-  if(!stack.length) {
-    return true
-  } else {
-    return false
-  }
+  // if(!stack.length) {
+  //   return true
+  // } else {
+  //   return false
+  // }
+  // 可以简写为：
+  return !stack.length
 }
 
 // 测试用例

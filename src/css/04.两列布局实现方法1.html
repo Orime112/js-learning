@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>两列布局</title>
+    <style>
+      #left {
+        width: 300px;
+        height: 200px;
+        background-color: blueviolet;
+        float: left;
+      }
+      #right {
+        height: 600px;
+        background-color: brown;
+        margin-left: 300px;
+      }
+      #inner{
+        height: 400px;
+        background-color: aqua;
+        /* clear: both; */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="left"></div>
+    <div id="right">
+      <div id="inner"></div>
+    </div>
+  </body>
+</html>

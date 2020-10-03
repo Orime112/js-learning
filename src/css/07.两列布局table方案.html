@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>两列布局table方案</title>
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+    }
+    #parent{
+      display: table;
+      width: 100%;
+      height: 800px;
+    }
+    #left{
+      width: 200px;
+      height: 100px;
+      background-color: cyan;
+      display: table-cell;
+    }
+    #right{
+      display: table-cell;
+      height: 400px;
+      background-color: brown;
+    }
+  </style>
+</head>
+<body>
+  <div id="parent">
+    <div id="left"></div>
+    <div id="right"></div>
+  </div>
+</body>
+</html>

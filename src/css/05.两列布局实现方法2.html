@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>两列布局2</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+      }
+      #left {
+        width: 400px;
+        height: 300px;
+        background-color: blueviolet;
+        float: left;
+      }
+      #right-fix {
+        float: right;
+        width: 100%;
+        background-color: brown;
+        margin-left: -400px;
+      }
+      #right{
+        height: 400px;
+        margin-left: 400px;
+        background-color: yellowgreen;
+      }
+      #inner{
+        width: 200px;
+        height: 200px;
+        background-color: coral;
+        clear: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="left"></div>
+    <div id="right-fix">
+      <div id="right">
+        <div id="inner"></div>
+      </div>
+    </div>
+  </body>
+</html>
