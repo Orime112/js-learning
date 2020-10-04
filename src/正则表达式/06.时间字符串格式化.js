@@ -9,7 +9,9 @@
     let template = "{0}年{1}月{2}日 {3}时{4}分{5}秒"
     template = template.replace(/\{(\d+)\}/g, (content, $1) => {
       console.log(content, $1)
-      return timeArg[$1] || "00"
+      let time = timeArg[$1]
+      typeof time == "undefined" ? time = "00" : time = time.padStart(2, '0')
+      return time
     })
     return template
   }
@@ -18,5 +20,5 @@
   })
 }()
 
-let str = "2020-10-04 10:33:05"
+let str = "2020-10-04 10:33:5"
 console.log(str.formatTime())
