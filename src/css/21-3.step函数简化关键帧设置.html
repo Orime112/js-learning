@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>step函数简化关键帧设置</title>
+  <style>
+    .box{
+      width: 200px;
+      height: 312px;
+      background: url("sprites/jiangshi.png");
+      animation: move 1s steps(10) infinite;
+    }
+    @keyframes move{
+      0%{
+        background-position-x: 0px;
+      }
+      100%{
+        background-position-x: -2000px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+</html>
