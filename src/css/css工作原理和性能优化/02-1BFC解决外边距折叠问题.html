@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BFC解决外边距折叠问题</title>
+    <style>
+      .p {
+      }
+
+      .p1 {
+        background: greenyellow;
+        width: 200px;
+        height: 100px;
+        margin-bottom: 50px;
+      }
+      .parent{
+        overflow: hidden;
+      }
+      .p2 {
+        background: brown;
+        width: 200px;
+        height: 100px;
+        margin-top: 100px;
+      }
+      /* inline-block左右间距不会出现margin塌陷 */
+      /* float左右间距也不会出现margin塌陷 */
+      .q{
+        font-size: 0;
+      }
+      .q1{
+        /* display: inline-block; */
+        float: left;
+        width: 200px;
+        height: 100px;
+        background-color: salmon;
+        margin-right: 50px;
+      }
+      .q2{
+        /* display: inline-block; */
+        float: left;
+        width: 200px;
+        height: 300px;
+        background-color: lightgreen;
+        margin-left: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="p">
+      <div class="p1"></div>
+      <div class="parent"><div class="p2"></div></div>
+    </div>
+    <div class="q">
+      <a href="" class="q1"></a>
+      <a href="" class="q2"></a>
+    </div>
+  </body>
+</html>
