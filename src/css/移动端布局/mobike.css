@@ -1,0 +1,33 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.main{
+  overflow: hidden;
+  margin-left: -10px;
+}
+
+.main .item {
+  height: 370px;
+  float: left;
+  width: 25%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-left: 10px solid #fff;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1028px){
+  .main .item {
+    width: 50%;
+    border-bottom: 10px solid #fff;
+  }
+}
+
+@media screen and (max-width: 624px){
+  .main .item {
+    width: 100%;
+    border-bottom: 10px solid #fff;
+  }
+}
