@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>流动模型(FLOW)测试</title>
+  <style>
+  /* 子元素均为inline-block之后，之间会有间距产生
+    解决办法：给父元素增加font-size: 0px;即可
+   */
+    .box{
+      /* display: inline-block; */
+      font-size: 0px;
+    }
+    .box div{
+      display: inline-block;
+    }
+    .box .d1{
+      background-color: brown;
+      font-size: 20px;
+    }
+    .box .d2{
+      background-color: greenyellow;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="d1">正则表达式</div>
+    <div class="d2">常见经典正��表达式测试题</div>
+  </div>
+</body>
+</html>
