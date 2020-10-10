@@ -26,14 +26,20 @@ ques2.replace(reg2, (content, $1, $2, $3) => {
  * 转换为驼峰命名
  */
  let ques3 = 'get-element-by-id'
- var f3 = function(s){
+ var f3_1 = function(s){
    return s.replace(/-\w+/g, (x) => {
      return x.replace(/-(\w)/g, (content, $1) => {
        return $1.toLocaleUpperCase()
      })
    })
  }
-console.log(f3(ques3)) // getElementById
+ // 转化为驼峰命名的另一种简单方法
+ var f3_2 = function(s){
+   return s.replace(/-\w/g, (x) => {
+     return x.slice(1).toLocaleUpperCase()
+   })
+ }
+console.log(f3_2(ques3), '转驼峰命名') // getElementById
 
 /**
  * 判断电话号码
