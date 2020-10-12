@@ -2,6 +2,7 @@
  * 参考地址：
  [掘金](https://juejin.im/post/6844903586711732237)
  [博客](https://www.dazhuanlan.com/2019/12/27/5e05852e4b294/?__cf_chl_jschl_tk__=9e0810d5fd6bed18745c1d261f8c348c83ec0e71-1602208680-0-Ac08t3pf-tecovUDxlYK4wE0dwY2gymjkt98kek2PHA3iYDCdTiahPrsjEIsd6MFSfB7lWgFRUPss_2LIfZckSX9HPCDz4McKcliihAGtc8TGuqNwoBywjpOhPxcLIexwaEZY9EZIoPR5Vd2E8xbD2dVOo0NCg5Qnt42vdjsOcVg0ceL-wSCW_MP_qyvI2kuMbdR31EElcVE529snpjqHuzFv_gsLmz44bMn3S496hM2kZ6j-fzg9VFeFUfVtBokAfkK2PsiCcDYRwGR_MCVTEwn1xtocS2Wrwzg_US-2q-lZS7px5oxHTY5ty2TsNRiWg)
+ [编程胶囊](https://codejiaonang.com/#/course/regex_chapter2/3/1)
  */
 
 const { RuleTester } = require("eslint")
