@@ -86,6 +86,13 @@ console.log(arr4.find((value,index,arr) => {
 
 /** 解构参数传值  */
 function setCookie(name, value, {secure, path, domain, expires}){
-  console.log(name, value, secure, path)
+  console.log(name, value, secure, path, '简单实现')
 }
 setCookie('测试', '值啊', {secure: '安全得很', expires: 600, path: 'https://www.baidu.com'})
+
+/** 解构参数默认值Pro——设置默认参数 */
+const defaultOptionObj = {secure: '安全', path: '路径', domain: '主域名', expires: '16000'}
+function setCookieDefault(name, value, {secure='默认', path='默认', domain='默认', expires='默认'} = defaultOptionObj){
+  console.log(name, value, secure, path, domain, expires, '默认值实现')
+}
+setCookieDefault('默认值name', '默认值value', {secure: '默认值安全', path: '默认值路径'})
