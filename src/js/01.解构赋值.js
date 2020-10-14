@@ -39,7 +39,7 @@ let str2 = "使用includes替代indexOf判断字符串是否包含"
 console.log(str2.includes(str1));
 
 // .repeat复制字符串
-console.log("复尺|".repeat(10));
+console.log("复制*".repeat(10));
 
 // 判断是否是数字
 // let num1 = 12
@@ -83,3 +83,9 @@ let arr4 = [1,23,45,75,87]
 console.log(arr4.find((value,index,arr) => {
   return value === 23
 }));
+
+/** 解构参数传值  */
+function setCookie(name, value, {secure, path, domain, expires}){
+  console.log(name, value, secure, path)
+}
+setCookie('测试', '值啊', {secure: '安全得很', expires: 600, path: 'https://www.baidu.com'})
