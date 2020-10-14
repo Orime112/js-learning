@@ -1,0 +1,13 @@
+.block {
+  font-size: 12px;
+  border: 1px solid brown;
+  border-radius: 4px;
+}
+.box1 {
+  font-size: 12px;
+  border: 1px solid brown;
+  border-radius: 4px;
+  width: 200px;
+  height: 300px;
+  background-color: greenyellow;
+}
