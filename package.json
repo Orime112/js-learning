@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/Orime112/js_learning#readme",
   "dependencies": {
-    "chalk-animation": "^1.6.0"
+    "chalk-animation": "^1.6.0",
+    "dayjs": "^1.9.3",
+    "moment": "^2.29.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.4.0",
