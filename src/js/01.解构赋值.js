@@ -16,7 +16,7 @@ console.log(far);
 // for of 循环取数组的值
 const f1 = (first, ...arg) => {
   // console.log(arg);
-  for( val of arg ) {
+  for( const val of arg ) {
     console.log(val);
     
   }
@@ -27,7 +27,7 @@ const f1 = (first, ...arg) => {
 const f2 = (first, ...arg) => {
   // console.log(arg);
   
-  for(val of arg) {
+  for(const val of arg) {
     console.log(val);
   }
 }
