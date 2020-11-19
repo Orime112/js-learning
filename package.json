@@ -21,6 +21,8 @@
     "chalk-animation": "^1.6.0",
     "dayjs": "^1.9.3",
     "moment": "^2.29.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.3.5",
     "sharp": "^0.26.2"
   },
   "devDependencies": {

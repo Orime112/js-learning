@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>主页</title>
+  </head>
+  <body>
+    <div>这里是主页</div>
+    <button id="btn">跳转去新页面</button>
+    <a href="http://localhost:8888/test?name=jinrui&password=123" target="_blank">a标签跳才是正解</a>
+    <script>
+      const btn = document.querySelector('#btn')
+      btn.addEventListener('click', () => {
+        console.log('跳到副页')
+        fetch('http://localhost:8888/test?name=aa&password=456').then(res => {
+          console.log(res)
+          return res
+        }).then(myJson => {
+          console.log(myJson)
+          window.open('http://localhost:8888/test')
+        })
+      })
+    </script>
+  </body>
+</html>
