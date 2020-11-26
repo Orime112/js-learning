@@ -10,8 +10,12 @@ class UserService {
   async isExists(name){
     const statement = `SELECT * FROM users WHERE name = ?`
     const [data, binary] = await connection.execute(statement, [name])
-    console.log(data, '判断重复');
     return !!data.length
+  }
+  async findOne(name){
+    const statement = `SELECT * FROM users WHERE name = ?`
+    const [data, binary] = await connection.execute(statement, [name])
+    return data
   }
 }
 

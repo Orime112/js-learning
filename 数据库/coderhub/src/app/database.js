@@ -10,6 +10,10 @@ const connections =  mysql.createPool({
 })
 
 connections.getConnection((err, con) => {
+  if(err){
+    console.log(err)
+    return
+  }
   con.connect((conErr) => {
     if(conErr) {
       console.log('连接失败:', conErr);
