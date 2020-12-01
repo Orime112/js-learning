@@ -29,7 +29,7 @@ const errorHandle = (error, ctx) => { // ! ctx.app.emit('error', error, ctx)，�
       break;
     case errorTypes.UNPERMISSION:
       status = 401 // unauthorized
-      message = '您不具备操作的权限！'
+      message = '您不具备操作的权限或资源已不存在！'
       break;
     default:
       status = 404

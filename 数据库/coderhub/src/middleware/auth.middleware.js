@@ -52,20 +52,21 @@ const verifyAuth = async (ctx, next) => {
 }
 
 /** // * 验证是否有操作权限 */
-const verifyPermission = async (ctx, next) => {
-  console.log('验证是否有操作权限的 middleware！');
-  // ? 1、获取参数
-  const { momentId } = ctx.params
-  const { id } = ctx.user
-  // ? 2、检查是否有权限
-  try {
-    const isPermission = await authService.checkMoment(momentId, id)
-    if (!isPermission) throw new Error()
-    console.log(isPermission, 'isPermission');
-    await next()
-  } catch (err) {
-    const error = new Error(errorTypes.UNPERMISSION)
-    return ctx.app.emit('error', error, ctx)
+const verifyPermission = (tableName) => {
+  return async (ctx, next) => {
+    console.log('验证是否有操作权限的 middleware！');
+    // ? 1、获取参数
+    const resourceId = ctx.params[tableName+'Id']
+    const { id } = ctx.user
+    // ? 2、检查是否有权限
+    try {
+      const isPermission = await authService.checkResource(tableName, resourceId, id)
+      if (!isPermission) throw new Error()
+      await next()
+    } catch (err) {
+      const error = new Error(errorTypes.UNPERMISSION)
+      return ctx.app.emit('error', error, ctx)
+    }
   }
 }
 module.exports = {

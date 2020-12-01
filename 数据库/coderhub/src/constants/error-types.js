@@ -5,6 +5,7 @@ const PASSWORD_IS_INCORRECT = 'password_is_incorrect'
 const UNAUTHORIZED = 'unauthorized'
 const UNAUTHORIZATION = 'unauthorization'
 const UNPERMISSION = 'unpermission'
+const SERVERERROR = 'servererror'
 
 module.exports = {
   NAME_OR_PASSWORD_IS_REQUIRED,
@@ -13,5 +14,6 @@ module.exports = {
   PASSWORD_IS_INCORRECT,
   UNAUTHORIZED,
   UNAUTHORIZATION,
-  UNPERMISSION
+  UNPERMISSION,
+  SERVERERROR
 }
