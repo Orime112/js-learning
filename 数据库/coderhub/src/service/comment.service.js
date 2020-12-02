@@ -1,3 +1,4 @@
+const moment = require('moment')
 const { context } = require('../app')
 const connection = require('../app/database')
 const errorTypes = require('../constants/error-types')
@@ -21,6 +22,15 @@ class CommentService {
   async remove(commentId) {
     const statement = `DELETE FROM comment WHERE id = ?`
     const [result] = await connection.execute(statement, [commentId])
+    return result
+  }
+  async getCommentsByMomentId(momentId) {
+    const statement = `SELECT c.id id, c.content content, c.createAt createTime, c.comment_id commentId, 
+JSON_OBJECT('id', u.id, 'name', u.name) author
+FROM comment c 
+LEFT JOIN user u ON c.user_id = u.id
+WHERE c.moment_id = ?;`
+    const [result] = await connection.execute(statement, [momentId])
     return result
   }
 }

@@ -1,7 +1,16 @@
+-- 创建用户表
+CREATE TABLE IF NOT EXISTS `user` (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  password VARCHAR(100) NOT NULL,
+  createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+)
+
 -- 创建 moment 表
 CREATE TABLE IF NOT EXISTS `moment` (
 id INT PRIMARY KEY AUTO_INCREMENT,
-conent VARCHAR(1000) NOT NULL,
+content VARCHAR(1000) NOT NULL,
 user_id INT NOT NULL,
 createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 updateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -10,7 +19,7 @@ FOREIGN KEY(user_id) REFERENCES user(id)
 
 -- moment 表插入语句
 INSERT INTO moment (user_id, content) VALUES (3, '心之所向，素履以往；生如逆旅，一苇以航');
-INSERT INTO moment (user_id, content) VALUES (4, '民胞物与之量，内圣外王之心');
+INSERT INTO moment (user_id, content) VALUES (1, '民胞物与之量，内圣外王之心');
 
 -- 创建 comment 表
 CREATE TABLE IF NOT EXISTS comment (
