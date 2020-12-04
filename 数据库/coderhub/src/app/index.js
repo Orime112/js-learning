@@ -7,6 +7,7 @@ const errorHandle = require('./error-handle')
 const momentRouter = require('../router/moment.router')
 const commentRouter = require('../router/comment.router')
 const labelRouter = require('../router/label.router')
+const fileRouter = require('../router/file.router')
 
 const app = new Koa()
 
@@ -22,6 +23,8 @@ app.use(commentRouter.routes())
 app.use(commentRouter.allowedMethods())
 app.use(labelRouter.routes())
 app.use(labelRouter.allowedMethods())
+app.use(fileRouter.routes())
+app.use(fileRouter.allowedMethods())
 
 app.on('error', errorHandle)
 
