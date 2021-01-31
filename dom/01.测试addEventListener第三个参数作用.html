@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试addEventListener第三个参数的作用</title>
+  <style>
+    #fa {
+      width: 500px;
+      height: 500px;
+      background-color: brown;
+    }
+    #fa #son {
+      width: 200px;
+      height: 200px;
+      background-color: cornflowerblue;
+    }
+  </style>
+</head>
+<body>
+  <div id="fa">
+    <div id="son"></div>
+  </div>
+  <script>
+  // * 默认是在冒泡阶段执行： son click -> fa click
+  // * 加上false之后没有改变现状，依然是冒泡阶段执行
+  // * 加上true之后发生了改变，由冒泡阶段执行变成了捕获阶段执行：fa click -> son click
+    fa.addEventListener('click', () => {
+      console.log('fa click')
+    }, false)
+    son.addEventListener('click', () => {
+      console.log('son click')
+    })
+  </script>
+</body>
+</html>
