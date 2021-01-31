@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <div id="imageSrc"></div>
+        <div id="text"></div>
+        <img src="" alt="">
+    </body>
+<script src="./lib/animal-api.js"></script>
+<script>
+    AnimalApi.default.getDog().then(function(animal) {
+        document.querySelector('#imageSrc').textContent = animal.imageSrc
+        document.querySelector('#text').textContent = animal.text
+        document.getElementsByTagName('img')[0].setAttribute('src', animal.imageSrc)
+    })
+</script>
+</html>
