@@ -134,3 +134,9 @@ module.exports = {
 ### 自己实现一个 loader
 
 ![20210131184637](https://cdn.jsdelivr.net/gh/Orime112/picbed/20210131184637.png)
+
+
+
+### 自己实现一个plugin
+
+![20210131211924](https://cdn.jsdelivr.net/gh/Orime112/picbed/20210131211924.png)
