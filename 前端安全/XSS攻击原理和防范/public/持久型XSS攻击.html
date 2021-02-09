@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      http-equiv="X-UA-Compatible"
+      content="ie=edge"
+    />
+    <title>评论列表</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css"
+    />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div
+            class="panel panel-default"
+          >
+            <div class="panel-heading">
+              <h2>评论列表</h2>
+            </div>
+            <div class="panel-body">
+              <ul
+                class="list-group comment-list"
+              ></ul>
+            </div>
+            <div class="panel-footer">
+              <div class="row">
+                <div class="col-md-12">
+                  <form
+                    onsubmit="addComment(event)"
+                  >
+                    <div
+                      class="form-group"
+                    ></div>
+                    <div
+                      class="form-group"
+                    >
+                      <label
+                        for="content"
+                        >内容</label
+                      >
+                      <input
+                        id="content"
+                        class="form-control"
+                        placeholder="请输入评论"
+                      />
+                    </div>
+                    <div
+                      class="form-group"
+                    >
+                      <input
+                        type="submit"
+                        class="btn btn-primary"
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script>
+      function getCommentList() {
+        $.get("/api/list").then(
+          (res) => {
+            if (res.code === 0) {
+              let html = ``
+              res.comments.forEach(
+                (element) => {
+                  html += `<li class="list-group-item">${element.username}：${element.content}</li>`
+                }
+              )
+              console.log(html)
+              $(".comment-list").html(
+                html
+              )
+            }
+          }
+        )
+      }
+      getCommentList()
+
+      function addComment(event) {
+        event.preventDefault()
+        let content = $(
+          "#content"
+        ).val()
+        if (!content) return
+        $.post("/api/comments", {
+          content,
+        }).then((data) => {
+          if(data.code === 1) location.href = '/login.html'
+          getCommentList()
+          $("#content").val("")
+        })
+      }
+    </script>
+  </body>
+</html>

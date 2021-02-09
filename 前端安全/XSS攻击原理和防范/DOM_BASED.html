@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XSS攻击原理和防范</title>
+</head>
+<body>
+  <input id="web" type="text"><button id="add">添加图片</button>
+  <div class="box"></div>
+  <script src="./node_modules/jquery/dist/jquery.js"></script>
+  <script>
+    $('#add').on('click', () => {
+      // ! 第一种：onerror方法攻击 xxx" onerror="alert(1)" id="
+      /** ! 第二种：插入script脚本 "><script>alert(document.cookie)<\/script><img src=" */
+      // * 防御方式：使用 encodeURI 转义 URL 即可（encodeURIComponent转义的是问号后面的）
+      // 使用encodeURI()编码后的结果是除了空格之外的其他字符都原封不动，只有空格被替换成了%20。而encodeURIComponent()方法则会使用对应的编码替换所有非字母数字字符。这也正是可以对整个URI使用encodeURI()，而只能对附加在现有URI后面的字符串使用encodeURIComponent()的原因所在。一般来说,我们使用encodeURIComponent()方法的时候要比使用encodeURI()更多,因为在实践中更常见的是对查询字符串参数而不是对基础URL进行编码.
+      $('.box').html(`<img src="${encodeURI($('#web').val())}" />`)
+    })
+  </script>
+</body>
+</html>
