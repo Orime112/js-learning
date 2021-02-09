@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>菜鸟教程(runoob.com)</title>
+    <style>
+      .droptarget {
+        float: left;
+        width: 100px;
+        height: 35px;
+        margin: 15px;
+        padding: 10px;
+        border: 1px solid #aaaaaa;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="fa">
+      <!-- <p>在两个矩形框中来回拖动 p 元素:</p>
+      <div
+        class="droptarget"
+        ondrop="drop(event)"
+        ondragover="allowDrop(event)"
+      > -->
+        <p
+          draggable="true"
+          id="dragtarget"
+        >
+          拖动我!
+        </p>
+      <!-- </div>
+      <div
+        class="droptarget"
+        ondrop="drop(event)"
+        ondragover="allowDrop(event)"
+      ></div>
+      <p style="clear: both">
+        <strong>注意：</strong>Internet Explorer 8 及更早 IE 版本或 Safari 5.1
+        及更早版本的浏览器不支持 drag 事件。
+      </p>
+      <p id="demo"></p> -->
+    </div>
+    <script>
+      dragtarget.onmousedown = (event) => {
+        event.stopPropagation();
+      }
+      // dragtarget.addEventListener('mousedown', (e) => {
+      //   e.stopPropagation()
+      // })
+      dragtarget.ondragstart = (event) => {
+        event.stopPropagation();
+        event.dataTransfer.setData("Text", event.target.id);
+      }
+      dragtarget.ondrag = (event) => {
+        event.stopPropagation();
+      }
+      // function allowDrop(event) {
+      //   event.stopPropagation();
+      //   event.preventDefault();
+      // }
+      // function drop(event) {
+      //   event.stopPropagation();
+      //   event.preventDefault();
+      //   var data = event.dataTransfer.getData("Text");
+      //   event.target.appendChild(document.getElementById(data));
+      //   document.getElementById("demo").innerHTML = "p 元素已被拖动";
+      // }
+      // const fa = document.querySelector('./')
+      // document.body.onmousedown = function(e){
+      //   // e.preventDefault()
+      //   console.log('fa mousedown')
+      // }
+      fa.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        console.log("fa mousedown");
+      });
+    </script>
+  </body>
+</html>

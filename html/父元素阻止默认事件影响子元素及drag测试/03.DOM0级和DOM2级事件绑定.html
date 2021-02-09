@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>DOM2级事件addEventListener</title>
+    <style>
+      #fa {
+        width: 300px;
+        height: 300px;
+        background-color: red;
+      }
+      #son {
+        width: 100px;
+        height: 100px;
+        background-color: beige;
+      }
+    </style>
+    <!-- 
+        绑定事件的三种方法：
+        1）HTML内部定义；   在HTML文档中写js代码，强耦合，不利于代码复用
+        2）DOM0级事件；     事件对象绑定    松耦合  HTML和js分离；缺点：有且只能绑定一个事件；只执行最后绑定的事件
+        3）DOM2级事件；     使用addEventListener()函数绑定事件；松耦合  HTML和js分离；优点：能绑定多个事件，事件捕获和事件冒泡
+
+        ele.addEventListener("a",b,false);为元素ele绑定事件a,触发事件a时执行代码b（也称句柄b）
+
+        tips:
+        DOM2级事件不用加 on
+     -->
+  </head>
+  <body>
+    <div id="fa"><div id="son"></div></div>
+    <script>
+      //绑定事件
+      son.addEventListener("click", function () {
+        console.log("son click");
+      });
+      fa.addEventListener("click", function () {
+        console.log("fa click");
+      }, false);
+      /**
+       * * 默认，是'son fa'
+       * * son + true，同上
+       * * fa + true，'fa son'
+       * * fa + false，'son fa'
+       * ? 结论：第三个参数在父级元素添加才有意义，默认false（冒泡阶段执行父级元素事件），如果设置为true，则在捕获阶段就先执行父级事件
+       */
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{
+    "name": "animal-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest",
+        "build": "webpack"
+    },
+    "author": "Ye Yang",
+    "license": "ISC",
+    "devDependencies": {
+        "@babel/cli": "^7.12.10",
+        "@babel/core": "^7.12.10",
+        "@babel/plugin-transform-modules-umd": "^7.12.1",
+        "@babel/preset-env": "^7.12.11",
+        "babel-jest": "^26.6.3",
+        "jest": "^26.6.3",
+        "webpack": "^5.19.0",
+        "webpack-cli": "^4.4.0"
+    },
+    "dependencies": {
+        "axios": "^0.21.1"
+    }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>基于原生 js 实现图片懒加载</title>
+    <style>
+      img {
+        display: block;
+        width: 100%;
+        height: 300px;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <img data-src="https://picsum.photos/id/627/200/200" alt="" />
+    <img data-src="https://picsum.photos/id/628/200/200" alt="" />
+    <img data-src="https://picsum.photos/id/629/200/200" alt="" />
+    <img data-src="https://picsum.photos/id/63/200/200" alt="" />
+    <img data-src="https://picsum.photos/id/630/200/200" alt="" />
+    <img data-src="https://picsum.photos/id/631/200/200" alt="" />
+    <img data-src="https://picsum.photos/id/633/200/200" alt="" />
+    <img data-src="https://picsum.photos/id/635/200/200" alt="" />
+  </body>
+  <script>
+    var imgs = document.querySelectorAll("img");
+
+    function loadImg(el) {
+      if (!el.src) {
+        const source = el.getAttribute("data-src");
+        el.src = source;
+      }
+    }
+
+    function isInSight(el) {
+      const bound = el.getBoundingClientRect();
+      const clientHeight = window.innerHeight; // ! window.innerHeight === document.documentElement.clientHeight -> true
+      return bound.top <= clientHeight; // ! 只要判断元素的top是否小于视口高度即可
+    }
+
+    function checkImgs() {
+      const imgs = document.querySelectorAll("img");
+      Array.from(imgs).forEach((el) => {
+        if (isInSight(el)) {
+          loadImg(el);
+        }
+      });
+    }
+    window.onload = function () {
+      checkImgs();
+    };
+    document.onscroll = function () {
+      checkImgs();
+    };
+  </script>
+</html>
