@@ -1,0 +1,1 @@
+(()=>{"use strict";let e=10,o=20;setTimeout((()=>{e=0,o=0}),1e3);const t=o;setTimeout((()=>{console.log(e),console.log(t)}),2e3)})();

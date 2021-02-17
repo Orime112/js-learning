@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    document.body.style = 'background-color:red'
+    console.log(1)
+    // setTimeout(() => {
+    //   console.log(5)
+    //   document.body.style = 'background-color:green'
+    // }, 0)
+    new Promise((res) => {
+      console.log(3)
+      res()
+    }).then(() => {
+      console.log(4)
+      // ! 由于微任务执行先于 GUI 渲染进程绘制，所以最后只有 yellow 这一种颜色，不会有 red 闪烁
+      document.body.style = 'background-color:yellow'
+    })
+    console.log(2)
+    // * 执行顺序：js 主栈 -> 微任务 -> GUI 渲染 -> 宏任务
+  </script>
+</body>
+</html>
