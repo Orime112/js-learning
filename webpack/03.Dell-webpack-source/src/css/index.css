@@ -1,0 +1,7 @@
+body {
+  background-color: pink;
+}
+
+div:nth-of-type(odd) {
+  background-color: rgb(231, 26, 78);
+}
