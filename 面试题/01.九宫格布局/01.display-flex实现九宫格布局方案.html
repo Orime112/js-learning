@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Document</title>
+    <style>
+      ul {
+        display: none;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+        background-color: lightblue;
+        padding: 10px;
+      }
+      li {
+        width: 33.33%;
+        height: 200px;
+        background-color: brown;
+        list-style: none;
+      }
+      li:nth-of-type(odd) {
+        background-color: yellowgreen;
+      }
+
+      .fa {
+        display: flex;
+        margin-top: 20px;
+        width: 100px;
+        height: 100px;
+        background-color: lightcoral;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+      .fa div {
+        width: 40px;
+        height: 40px;
+        background-color: lightgreen;
+      }
+      .fa .son2 {
+        align-self: stretch;
+      }
+
+      section {
+        display: flex;
+        align-items: center;
+        height: 120px;
+        background: beige;
+      }
+
+      section div {
+        height: 60px;
+        background: cyan;
+        margin: 5px;
+      }
+
+      div:nth-child(3) {
+        /* 给其中一个子元素加的 align-self 会覆盖加在外层的 align-items */
+        align-self: flex-end; 
+        background: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+
+    <div class="fa">
+      <div class="son1"></div>
+      <div class="son2"></div>
+    </div>
+
+    <div class="self-center">
+      <section>
+        <div>Item #1</div>
+        <div>Item #2</div>
+        <div>Item #3</div>
+      </section>
+    </div>
+  </body>
+</html>

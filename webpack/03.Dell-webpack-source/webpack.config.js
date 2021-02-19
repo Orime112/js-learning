@@ -7,14 +7,15 @@ module.exports = {
   entry: {
     main: "./src/index.js",
   },
-  mode: "development",
+  // mode: "development",
+  mode: "production",
   // ? source-map 是一种映射关系，dist/main.js line96 -> src/main.js line1
   // * inline 情况下，map 文件会以 dataURL 形式写入到打包后文件中
   // * cheap 情况下，只要告诉我行信息即可，不需要告诉我列信息；另一个作用是只管业务代码，而不会去管第三方loader
   // * cheap-module 情况下，只要告诉我行信息即可，不需要告诉我列信息；但是不仅管业务代码，还会去管第三方loader
   // * eval 情况下，通过 eval 形式生成映射关系，执行效率最快，性能最好的打包方式，但是针对比较复杂的代码，eval方案提示的代码可能并不全面
   // ? development 配置方案`eval-cheap-module-source-map`；production 配置方案`false 或者 cheap-module-source-map`
-  devtool: 'eval-cheap-module-source-map', // ! match pattern "^(inline-|hidden-|eval-)?(nosources-)?(cheap-(module-)?)?source-map$".
+  devtool: 'cheap-module-source-map', // ! match pattern "^(inline-|hidden-|eval-)?(nosources-)?(cheap-(module-)?)?source-map$".
   devServer: {
     // ! 执行命令 webpack serve 的时候会启动服务器，不生成 dist 目录，而是会把打包后的内容放到内存中，提高打包速度
     contentBase: "./dist",
@@ -30,7 +31,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /.js$/,
+        test: /.jsx?$/,
         use: [
           {
             loader: "babel-loader",
@@ -64,4 +65,7 @@ module.exports = {
     }),
     new HotModuleReplacementPlugin(),
   ],
+  optimization: {
+    usedExports: true
+  }
 }
