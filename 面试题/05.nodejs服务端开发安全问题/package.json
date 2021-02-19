@@ -1,0 +1,13 @@
+{
+  "name": "05.nodejs-safe",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ye Yang",
+  "license": "MIT",
+  "devDependencies": {
+    "child_process": "^1.0.2",
+    "express": "^4.17.1",
+    "webpack": "^5.23.0",
+    "webpack-cli": "^4.5.0"
+  }
+}
