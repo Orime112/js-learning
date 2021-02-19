@@ -1,3 +1,19 @@
-import {sum} from './tree-shaking-test/math'
+function getElement() {
+  return import("lodash").then(({ default: _ }) => {
+    const element = document.createElement("div")
+    element.innerHTML = _.join(["a", "b", "c"])
+    return element
+  })
+}
 
-sum(1,2)
+getElement().then((ele) => {
+  document.body.appendChild(ele)
+})
+
+const a = 12
+const b = 23
+function c(a, b) {
+  return a + b
+}
+
+console.log(c(a, b))
