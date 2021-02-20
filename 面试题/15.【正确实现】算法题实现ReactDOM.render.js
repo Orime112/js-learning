@@ -16,13 +16,13 @@ function ReactEle(type, props) {
       for (let key in attr) {
         element.setAttribute(key, attr[key])
       }
-      if (child) {
-        for (let val of child) {
-          val.render(element)
-        }
-      }
-      container.appendChild(element)
     }
+    if (child) {
+      for (let val of child) {
+        val.render(element)
+      }
+    }
+    container.appendChild(element)
     return element
   }
 }
