@@ -1,0 +1,15 @@
+{
+  "name": "05.implement-plugin-bymyself",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ye Yang",
+  "license": "MIT",
+  "scripts": {
+    "debug": "node --inspect --inspect-brk node_modules/webpack/bin/webpack.js",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  }
+}

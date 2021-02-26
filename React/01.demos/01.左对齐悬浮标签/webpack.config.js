@@ -1,11 +1,17 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const AddAssetHtmlWebpackPlugin = require('add-asset-html-webpack-plugin')
+const { DllReferencePlugin } = require('webpack')
 
 module.exports = {
-  mode: 'production',
-  entry: './src/index.jsx',
+  mode: 'development',
+  entry: {
+    main: './src/index.jsx',
+    list: './src/list.jsx'
+  },
   output: {
-    filename: 'main.js',
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, './dist')
   },
   resolve: {
@@ -14,7 +20,7 @@ module.exports = {
   module: {
     rules:[
       {
-        test: /.jsx?$/,
+        test: /\.jsx?$/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -26,7 +32,27 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: './public/index.html',
+      filename: 'index.html',
+      chunks: ['main']
+    }),
+    new HtmlWebpackPlugin({
+      template: './public/index.html',
+      filename: 'list.html',
+      chunks: ['list']
+    }),
+    new CleanWebpackPlugin(),
+    new AddAssetHtmlWebpackPlugin({
+      publicPath: './',
+      filepath: path.resolve(__dirname, './dll/vendors.dll.js')
+    }),
+    new DllReferencePlugin({
+      manifest: path.resolve(__dirname, './dll/vendors.manifest.json')
     })
-  ]
+  ],
+  optimization: {
+    splitChunks:{
+      chunks: 'all',
+    }
+  }
 }
