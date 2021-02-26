@@ -4,10 +4,16 @@
   "main": "index.js",
   "author": "Ye Yang",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "build:dll": "webpack --config ./build/webpack.dll.js"
+  },
   "devDependencies": {
     "@babel/core": "^7.13.1",
     "@babel/preset-react": "^7.12.13",
+    "add-asset-html-webpack-plugin": "^3.2.0",
     "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^5.2.0",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0"
