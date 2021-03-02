@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS实现固定+滚动</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 300px;
+        height: 80vh;
+        padding: 10px 20px;
+        border: 1px solid #ccc;
+        overflow: scroll;
+        position: relative;
+      }
+      .fix {
+        background-color: brown;
+        width: 100%;
+        height: 100px;
+        margin-bottom: 10px;
+        position: sticky;
+        top: 0px;
+      }
+      .scrollWrap{
+        background-color: red;
+        height: 100%;
+        overflow: scroll;
+      }
+      .scroll {
+        background: repeat-y url("https://picsum.photos/id/314/4608/3072")
+          center top;
+        background-size: 100%;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="fix"></div>
+      <div class="scrollWrap">
+        <div class="scroll"></div>
+      </div>
+    </div>
+  </body>
+</html>

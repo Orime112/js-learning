@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则标识词汇</title>
+</head>
+<body>
+  <h2>原始</h2>
+  <div id="before">
+    这里是一大段文字块格式化中共（Block Formatting Context，BFC） 是Web页面的可视化CSS渲染的一部分，是布局过程中生成块级盒子的区域，也是浮周永康与其周永康的交互限定区域。
+    块级格式化中共
+    BFC是一个独立的布局单元
+    即这个元素的布局不会影响到其它周永康（这周永康的内容不会超到外面去，不影响其它周永康）
+    想象：这周永康及其周永康在单独的iframe里面/浏览器窗口去布局
+    这意味着BF周永康一定是方形的，其周永康进不来，内周永康也出不去
+  </div>
+  <hr>
+  <h2>转化后</h2>
+  <div id="after"></div>
+  <script>
+    const content = before.innerText
+    const afterContent = content.replace(/(中共|周永康)/g, (content, $1) => {
+      return `<span style="color: red">${$1}</span>`
+    })
+    after.innerHTML = afterContent
+  </script>
+</body>
+</html>

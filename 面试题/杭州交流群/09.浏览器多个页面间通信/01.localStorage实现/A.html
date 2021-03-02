@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A页面</title>
+  </head>
+  <body>
+    <div id="A">点击发送</div>
+    <script>
+      //页面A发送事件
+      A.onclick = function sendMsg() {
+        window.localStorage.setItem("msg", "Hello, I'm A!")
+      }
+    </script>
+  </body>
+</html>
