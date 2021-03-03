@@ -20,9 +20,11 @@
   <div id="after"></div>
   <script>
     const content = before.innerText
-    const afterContent = content.replace(/(中共|周永康)/g, (content, $1) => {
-      return `<span style="color: red">${$1}</span>`
-    })
+    // const afterContent = content.replace(/(中共|周永康)/g, (content, $1) => {
+    //   return `<span style="color: red">${$1}</span>`
+    // })
+    // * $1 虽然在字符串里面，但可以看做类似${}的一个变量
+    const afterContent = content.replace(/(中共|周永康)/g, `<span style="color: red">$1</span>`)
     after.innerHTML = afterContent
   </script>
 </body>
