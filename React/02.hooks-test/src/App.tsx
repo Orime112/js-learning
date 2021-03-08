@@ -4,8 +4,8 @@ import Hello from './Hello'
 import MouseTracker from './MouseTracker'
 import useMousePosition from './hooks/useMousePosition'
 import useURLLoader from './hooks/useURLLoader'
-
 import LikeButton from './LikeButton'
+import UserImmer from './UserImmer'
 
 export interface IDogResult {
   message: string;
@@ -31,6 +31,7 @@ const App = () => {
     { showTracker && <div>{`x:${position.x};y:${position.y}`}</div>}
     <button onClick={() => setShowTracker(!showTracker)}>Toggle Tracker</button>
     {isLoading ? <p>🐶加载中</p> : <img style={{width: '50%', display: 'block'}} src={dogResult && dogResult.message} />}
+    <UserImmer />
   </>)
 }
 
