@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>能鼠标拖动的小球</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+        background-color: lightyellow;
+      }
+      #box {
+        position: absolute;
+        top: 100px;
+        left: 100px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: lightblue;
+        cursor: move;
+        z-index: 0;
+      }
+    </style>
+    <script src="./js/drag.js"></script>
+  </head>
+  <body>
+    <div id="box"></div>
+    <script>
+      const drag = new Drag(box)
+      console.log(drag)
+    </script>
+  </body>
+</html>
