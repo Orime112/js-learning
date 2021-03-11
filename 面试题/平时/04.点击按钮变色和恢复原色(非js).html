@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+     margin: 0;
+     padding: 0;
+    }
+    button {
+      width: 100px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: chartreuse;
+      border: none;
+    }
+    button:nth-of-type(2){
+      background-color: brown;
+    }
+    button:nth-of-type(3){
+      background-color: lightpink;
+    }
+    button:focus{
+      /* background-color: white; */
+      outline: none;
+    }
+    button:active {
+      background-color: blueviolet;
+      border: none;
+    }
+    button:visited{
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="fa">
+    <button id="a"></button>
+    <button id="b"></button>
+    <button id="c"></button>
+  </div>
+</body>
+</html>

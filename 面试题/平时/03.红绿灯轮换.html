@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>js实现红绿灯</title>
+  <style>
+    * {
+     margin: 0;
+     padding: 0;
+    }
+    .lamp {
+      width: 40px;
+      height: 40px;
+      background-color: red;
+      border-radius: 50%;
+      transition: all 0.3 ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="lamp"></div>
+  <script>
+    const lamp = document.querySelector('.lamp')
+    function startRed() {
+      lamp.style.backgroundColor = 'red'
+      setTimeout(() => {
+        startGreen()
+      }, 3000)
+    }
+    function startGreen(color, ) {
+      lamp.style.backgroundColor = 'green'
+      setTimeout(() => {
+        startYellow()
+      }, 1000)
+    }
+    function startYellow() {
+      lamp.style.backgroundColor = 'yellow'
+      setTimeout(() => {
+        startRed()
+      }, 1000)
+    }
+
+    // lamp.onclick = startRed
+    startRed()
+
+  </script>
+</body>
+</html>
