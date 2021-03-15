@@ -37,3 +37,5 @@ eventHub.on('xxx', f2)
 eventHub.off('xxx', f2)
 
 eventHub.emit('xxx', 'aaa')
+
+export {}
