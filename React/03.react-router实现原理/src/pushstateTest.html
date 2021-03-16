@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>React App</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script>
+    window.onpopstate = (event) => {
+      // * emit when popstate was triggered
+      console.log({ state: event.state, pathname: window.location.pathname, type: 'popstate' });
+    };
+    window.onpushstate = (event) => {
+      console.log(event);
+    };
+    (function (history) {
+      var pushState = history.pushState;
+      history.pushState = function (state, title, pathname) {
+        if (typeof window.onpushstate == "function") {
+          window.onpushstate({ state, pathname, type: 'pushstate' });
+        }
+        return pushState.apply(history, arguments);
+      };
+    })(window.history);
+
+    //绑定事件处理函数. 
+    setTimeout(() => {
+      history.pushState({ page: 1 }, "title 1", "/page1");
+    }, 1000);
+    setTimeout(() => {
+      history.pushState({ page: 2 }, "title 2", "/page2");
+    }, 2000);
+
+    setTimeout(() => {
+      history.replaceState({ page: 3 }, "title 3", "/page3");
+    }, 3000);
+
+    setTimeout(() => {
+      history.back();
+    }, 4000);
+
+    setTimeout(() => {
+      history.go(1);//向前进一步
+    }, 5000);
+    // page1 => page2 => page3 => page2 => page3
+  </script>
+</body>
+</html>
