@@ -40,38 +40,24 @@ const node = binarySearchTree
 let left = node.right.right // val:3
 let right = node.right.left // val:7
 
-function findCommonRoot(
-  root,
-  lNode,
-  rNode
-) {
+function findCommonRoot(root, lNode, rNode) {
   if (!root) return null
   // * 如果找到相等的直接返回
-  if (root.val === lNode.val)
-    return lNode
-  if (root.val === rNode.val)
-    return rNode
+  if (root.val === lNode.val) return lNode
+  if (root.val === rNode.val) return rNode
   if (lNode.val < root.val) {
     // * 如果分别在左右两侧就返回root
     if (rNode.val > root.val) {
       return root
     } else {
       // * 说明都在左子树
-      return findCommonRoot(
-        root.left,
-        lNode,
-        rNode
-      )
+      return findCommonRoot(root.left, lNode, rNode)
     }
   } else {
     if (rNode.val < root.val) {
       return root
     } else {
-      return findCommonRoot(
-        root.right,
-        lNode,
-        rNode
-      )
+      return findCommonRoot(root.right, lNode, rNode)
     }
   }
 }

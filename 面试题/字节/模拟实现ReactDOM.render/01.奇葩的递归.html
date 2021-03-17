@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+
+  <script>
+    function el(label, props = {}, children) {
+      let str = "";
+      let propsStr = "";
+      let child = "";
+      Object.keys(props).map((item) => {
+        propsStr += `${item}=${props[item]}; `;
+      });
+      if (typeof children[0] === "string") {
+        child = children[0];
+      } else {
+        children.map((element) => {
+          child += element.render();
+        });
+      }
+      return {
+        render() {
+          return (str += `<${label} ${propsStr}>${child}</${label}>`);
+        },
+      };
+    }
+    // * 面试中的tree
+    let tree = el("ul", { id: "2" }, [
+      el("li", { id: 3 }, ["item 1"]),
+      el("li", { id: 3 }, ["item 1"]),
+      el("li", { id: 3 }, ["item 1"]),
+    ]);
+
+    let oDiv = document.createElement("div");
+    oDiv.innerHTML = tree.render();
+    document.body.appendChild(oDiv);
+  </script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: brown;
+    }
+    #a {
+      position: absolute;
+      left: 20px;
+      top: 30px;
+    }
+    #b {
+      background-color: lightgreen;
+      /* position: relative; */
+      left: 20px;
+      top: 30px;
+    }
+    #c {
+      background-color: lightpink;
+      position: absolute;
+      top: 50px;
+      left: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="a">
+    <div id="b">
+      <div id="c"></div>
+    </div>
+  </div>
+</body>
+</html>

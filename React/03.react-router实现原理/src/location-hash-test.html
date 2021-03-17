@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>React App</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <a id="a" href="#/a">去a</a>
+  <a id="b" href="#/b">去b</a>
+
+  <button id='btn'>外界点击</button>
+
+  <script>
+    // * 利用hash实现路由切换
+    window.addEventListener('hashchange', () => {
+      console.log(window.location.hash);
+    });
+    btn.onclick = function(){
+      a.click()
+    }
+  </script>
+</body>
+</html>

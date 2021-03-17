@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>输入框input验证</title>
+</head>
+<body>
+  <form action="">
+    <input id="input" type="text">
+  </form>
+  <script>
+
+    /**
+     * 注意：每当元素的 value 改变，input 事件都会被触发。
+     * 这与 change 事件不同。change 事件仅当 value 被提交时触发，
+     * 如按回车键，从一个 options 列表中选择一个值等。
+     * */
+    
+    const input = document.getElementById('input')
+    input.onchange = function handleSubmit(e){
+      e.preventDefault();
+      // e.target -> input DOM元素
+      // e.target.value -> input 的值
+      console.log(e, e.target, e.value, e.target.value)
+    }
+    input.onblur = function handleSubmit(e){
+      e.preventDefault();
+      // e.target -> input DOM元素
+      // e.target.value -> input 的值
+      console.log('blur', e.target.value)
+    }
+    input.oninput = function handleSubmit(e){
+      e.preventDefault();
+      // e.target -> input DOM元素
+      // e.target.value -> input 的值
+      console.log('oninput', e.target.value)
+    }
+  </script>
+</body>
+</html>

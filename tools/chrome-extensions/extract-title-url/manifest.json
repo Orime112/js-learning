@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "提取文章标题和URL",
+  "version": "0.1.0",
+  "description": "一键提取文章标题和URL并自动拼接成Markdown格式",
+  "icons": {
+    "84": "./icon/pig.png"
+  },
+  "browser_action": {
+    "default_icon": "./icon/pig.png",
+    "default_title": "一键提取文章标题并拼接URL地址",
+    "default_popup": "./html/popup.html"
+  },
+  "permissions": [
+    "http://api.wunderground.com/api/",
+    "tabs",
+    "activeTab",
+    "notifications",
+    "storage",
+    "contextMenus"
+  ]
+}

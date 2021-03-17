@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+     margin: 0;
+     padding: 0;
+    }
+    button {
+      width: 100px;
+      height: 40px;
+      border-radius: 10px;
+      background-color: chartreuse;
+      /* border: none; */
+    }
+    button:nth-of-type(2){
+      background-color: brown;
+    }
+    button:nth-of-type(3){
+      background-color: lightpink;
+    }
+  </style>
+</head>
+<body>
+  <div id="fa">
+    <button id="a"></button>
+    <button id="b"></button>
+    <button id="c"></button>
+  </div>
+  <script>
+
+    let aBg = a.style.backgroundColor
+    a.addEventListener('focus', (e) => {
+      console.log(e, 'focus')
+      e.target.style.backgroundColor = 'white'
+    })
+    a.addEventListener('blur', (e) => {
+      e.target.style.backgroundColor = aBg
+    })
+
+    let bBg = b.style.backgroundColor
+    b.addEventListener('focus', (e) => {
+      console.log(e, 'focus')
+      e.target.style.backgroundColor = 'white'
+    })
+    b.addEventListener('blur', (e) => {
+      e.target.style.backgroundColor = aBg
+    })
+
+    let cBg = c.style.backgroundColor
+    c.addEventListener('focus', (e) => {
+      console.log(e, 'focus')
+      e.target.style.backgroundColor = 'white'
+    })
+    c.addEventListener('blur', (e) => {
+      e.target.style.backgroundColor = aBg
+    })
+    
+  </script>
+</body>
+</html>

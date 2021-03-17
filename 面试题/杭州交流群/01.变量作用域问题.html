@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var data = []
+    for(var k = 0; k < 3; k++){
+      data[k] = function(){
+        console.log(k)
+      }
+    }
+    data[0]();
+    data[1]();
+    data[2]();
+  </script>
+</body>
+</html>
