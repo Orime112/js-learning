@@ -45,15 +45,58 @@ production环境下默认做了tree shaking
 
 ## code spliting
 默认将第三方模块一起打包到`main.js`文件中，导致首次请求2.0Mb的内容，页面重新刷新之后还要请求2.0Mb的内容
-- 经过多入口之后，手动进行代码分割 -> main.js 43Kb；lodash.js 1.8Mb
-- 或者配置optimization.splitChunks.chunks = 'all'，自动进行代码分割
+- 1、多入口配置方案经过多入口之后，手动进行代码分割 -> main.js 43Kb；lodash.js 1.8Mb
+- 2、生产环境配置：optimization.splitChunks.chunks = 'all'，自动进行代码分割
+  - 同步/异步代码都会进行代码分割
 
 > 由于浏览器会缓存已经加载过的js文件，所以起到节省网络请求的功能
 
-### import动态引入第三方库
+> 注意：webpack的optimization.splitChunks默认值为async，意思是异步代码才对首屏加载优化有影响，all同步代码只是提高了缓存利用率。
+
+## import动态引入第三方库
 ```js
 import('lodash').then(({default: _}) => {
   // ...
 })
 ```
 由于动态引入是实验性功能，所以需要安装`babel-plugin-dynamic-import-webpack`
+
+但是以上插件无法支持魔法字符串更改动态模块打包名称，所以需要安装`@babel/plugin-syntax-dynamic-import`插件，并且配置到`babel-loader`的`plugins`选项中
+
+- 魔法字符串配置语法
+```js
+  ...
+  return import(/* webpackChunkName:"lds" */ "lodash")
+  ...
+```
+
+## webpackPrefetch: true 优化异步代码加载速度
+```js
+document.addEventListener("click", () => {
+  import(/* webpackPrefetch: true */ "./js/pre-fetch-click").then(({ default: func }) => {
+    func()
+  })
+})
+```
+> 注意：preload 并不能等空闲时候才去加载
+
+> 现在的前端性能优化，缓存并不是最重要的点，要转移到代码覆盖率上去思考
+
+## 分离css模块文件
+`mini-css-extract-plugin`无法在开发环境中热更新，只能在生产环境下使用
+```js
+// 安装 mini-css-extract-plugin
+yarn add mini-css-extract-plugin -D
+```
+使用方式：
+```js
+const = MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// 将原来的 style-loader 替换为 MiniCssExtractPlugin.loader
+```
+
+### 分离出的css代码进行压缩
+```js
+yarn add optimize-css-assets-webpack-plugin -D
+```
+
+## contenthash 标识每次打包生成独一无二的文件
