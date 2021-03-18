@@ -1,10 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react"
+import ReactDOM from "react-dom"
+import Child from "@/jsx/Child"
 
-consolle.log('sfa')
-
-function App(){
-  return (<div>这是App根组件!!!</div>)
+function App() {
+  return (
+    <div>
+      这是App根组件!!!
+      <Child />
+    </div>
+  )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById("root"))
