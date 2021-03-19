@@ -54,4 +54,4 @@ function calculator(object, map = new Map()) {
   }
 }
 
-console.log(calculator(testData)) // * 32
+console.log(calculator(testData)) // * 52
