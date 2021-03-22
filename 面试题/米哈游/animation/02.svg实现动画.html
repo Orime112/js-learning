@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <svg width="320" height="320" xmlns="http://www.w3.org/2000/svg">
+    <text font-family="microsoft yahei" font-size="30" x="0" y="0" fill="green">
+      动
+      <!-- 从0秒开始,总时长3秒，不间断循环，沿着路径path运动 -->
+      <animateMotion
+        path="m124.067754,67.21128c39.580339,-101.001223 194.657404,0 0,129.858716c-194.657404,-129.858716 -39.580339,-230.859939 0,-129.858716z"
+        begin="0s" dur="5s" rotate="auto" repeatCount="indefinite" />
+    </text>
+    <path
+      d="m124.067754,67.21128c39.580339,-101.001223 194.657404,0 0,129.858716c-194.657404,-129.858716 -39.580339,-230.859939 0,-129.858716z"
+      stroke-width="1.5" stroke="#cd0000" fill="none" />
+  </svg>
+  <script>
+    // svg指当前svg DOM元素
+    // 暂停
+    // svg.pauseAnimations();
+
+    // 重启动
+    // svg.unpauseAnimations();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>JS Bin</title>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      function colorPalette(gradient) {
+        var canvas = document.createElement("canvas");
+        canvas.width = "1";
+        canvas.height = "256";
+        // document.body.appendChild(canvas); // debug
+        var ctx = canvas.getContext("2d"),
+          grad = ctx.createLinearGradient(0, 0, 1, 256);
+        gradient.forEach(function (item) {
+          grad.addColorStop(item[0], item[1]);
+        });
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, 1, 256);
+        return ctx.getImageData(0, 0, 1, 256).data;
+      }
+
+      (function () {
+        var palette = colorPalette([
+          [0, "red"],
+          [0.7, "orange"],
+          [0.17, "yellow"],
+          [0.22, "green"],
+          [0.42, "cyan"],
+          [0.82, "blue"],
+          [0.9, "purple"],
+        ]);
+
+        // Canvas元素
+        var canvas = document.querySelector("canvas");
+        var context = canvas.getContext("2d");
+        var width = canvas.width,
+          height = canvas.height;
+        var start = Date.now();
+        // 绘制方法
+        var draw = function () {
+          context.clearRect(0, 0, width, height);
+          // 计算偏移
+          var offset = Math.floor((Date.now() - start) / (3300 / 256)) % 256;
+          context.fillStyle =
+            "rgba(" +
+            [
+              palette[offset * 4 + 0],
+              palette[offset * 4 + 1],
+              palette[offset * 4 + 2],
+              palette[offset * 4 + 3],
+            ] +
+            ")";
+          context.arc(width / 2, height / 2, height / 2, 0, 2 * Math.PI);
+          context.fill();
+          // 持续变化
+          requestAnimationFrame(draw);
+        };
+        draw();
+      })();
+    </script>
+  </body>
+</html>
