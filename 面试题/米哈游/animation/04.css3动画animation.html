@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* css 部分 */
+    @keyframes rotateT {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @-webkit-keyframes rotateT {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .t {
+      height: 500px;
+      width: 500px;
+      position: relative;
+      border-radius: 50%;
+      transform: scale(.8);
+      border: 1px solid #dedede;
+    }
+
+    .t::before {
+      content: "";
+      width: 50px;
+      height: 50px;
+      background: radial-gradient(72px, #f00, #ff0, #080);
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -25px;
+      margin-left: -25px;
+      box-shadow: 0 0 37px #fcff4a;
+    }
+
+    .t1 {
+      height: 20px;
+      border-radius: 50%;
+      width: 20px;
+      margin-top: -10px;
+      top: 50%;
+      left: -10px;
+      background: radial-gradient(26px, #0082ff, #184608, #003ade);
+      position: absolute;
+      animation: rotateT 3s infinite ease-out;
+      transform-origin: 260px center;
+    }
+  </style>
+
+  </style>
+</head>
+
+<body>
+  <!-- html 部分 -->
+  <div style="width:700px; ">
+    <div class="t">
+      <div class="t1"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <style type="text/css">
+    #animate {
+      width: 200px;
+      height: 200px;
+      background: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="animate"></div>
+  <script>
+    let elem = document.getElementById("animate");
+    let left = 0;
+    let timer = setInterval(function () {
+      if (left < window.innerWidth - 200) {
+        elem.style.marginLeft = left + "px";
+        left += 10;
+      } else {
+        let newTimerId = setInterval(() => {
+          if (left > 200) {
+            left -= 10;
+            elem.style.marginLeft = left + 'px'
+          } else {
+            clearInterval(newTimerId)
+          }
+        }, 16)
+        clearInterval(timer);
+      }
+    }, 16); //这里的16毫秒
+  </script>
+</body>
+
+</html>
