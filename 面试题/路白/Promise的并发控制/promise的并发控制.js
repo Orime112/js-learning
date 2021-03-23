@@ -7,7 +7,7 @@
 function limitLoad(urls, handler, limit){
   const sequence = [].concat(urls)
   let promises = []
-
+  
   promises = sequence.splice(0, limit).map((url, index) => {
     return handler(url).then(() => {
       return index // * 当前加载完成之后，返回当前加载的索引，比如2
