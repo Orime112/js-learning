@@ -28,11 +28,11 @@ console.log(
   (process.memoryUsage().heapTotal / 1024 / 1024).toFixed(2) + "Mb"
 )
 
-// key = null
-key = {}
+key = null // * 置空键，释放内存
+// key = {} // ! 没置空键，占用内存
 global.gc()
 console.log(
-  `第二次垃圾回收，当前内存使用情况${(
+  `第三次垃圾回收，当前内存使用情况${(
     process.memoryUsage().heapUsed /
     1024 /
     1024

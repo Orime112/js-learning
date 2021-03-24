@@ -8,11 +8,11 @@ map.set(key, new Array(11104*19))
 global.gc()
 console.log(`第二次垃圾回收内存情况：已用${(process.memoryUsage().heapUsed/1024/1024).toFixed(2)} Mb；总${(process.memoryUsage().heapTotal/1024/1024).toFixed(2)} Mb`)
 
-key = null
+// key = null // ! 置空key键，依然不会释放
 global.gc()
 console.log(`第三次垃圾回收内存情况：已用${(process.memoryUsage().heapUsed/1024/1024).toFixed(2)} Mb；总${(process.memoryUsage().heapTotal/1024/1024).toFixed(2)} Mb`)
 
-map.clear()
+map.clear() // ! clear之后才能被释放
 global.gc()
 console.log(`第四次垃圾回收内存情况：已用${(process.memoryUsage().heapUsed/1024/1024).toFixed(2)} Mb；总${(process.memoryUsage().heapTotal/1024/1024).toFixed(2)} Mb`)
 
