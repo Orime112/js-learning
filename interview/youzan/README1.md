@@ -1,7 +1,37 @@
 ## 1. 说一下你理解的闭包？
 
-### 那么引用内层函数执行上下文释放之后外层执行上下文会被释放的对吧？
-- 🤔对的吧
+对闭包的理解是千人千面的，以下是我的个人观点：
+
+说到闭包，不得不先提及javascript中函数执行的机制：在javascript语句执行过程中，有一个宿主执行环境，可以称之为执行上下文栈（ECS：Execution Context Stack），其中包含全局执行上下文（ECG：Execution Context Global）；而在函数执行语句被执行的时候，比如`func();`，会临时开辟一个新的执行上下文，可以称之为函数执行上下文（ECF：Execution Context Func）；无论每种执行上下文，其中都包含了变量对象VO（Variable Object），标识了当前执行上下文中所拥有的所有变量；javascript语句执行过程中，依次压入当前语句所开辟的执行上下文，执行完毕后弹出；全局执行上下文ECG比较特殊，它默认被推入执行栈底，伴随整个执行周期，最后才被释放，而函数执行上下文在执行过程中，会被依次压入栈中执行，理论上执行完毕出栈；然而执行栈中存在作用域链的概念，在一个执行栈中可以引用自它之下到栈底的所有执行栈中的活动对象（AO：Active Object，当执行栈创建瞬间原有执行栈中的变量对象VO就成了AO），如果任一执行栈中的活动对象被其他执行栈引用，则该执行栈不能被释放（释放意味着执行栈销毁，变量对象被回收），这就形成了闭包，闭包的形成通常场景是外层函数执行返回结果为函数，并且该函数中引用了外层函数中的变量对象。
+
+```js
+function foo(){
+  let a = 12
+  return function bar(){
+    console.log(a)
+  }
+}
+let f = foo()
+debugger;
+f() // * 此时观察控制台，closure 中有 foo -> a = 12
+```
+
+```js
+let c = undefined;
+function foo(){
+  let a = {c: 434}
+  c = a
+  let res = {b: a}
+  return {b: a}
+}
+let obj = foo() // * 此时观察控制台，则不会产生闭包，这种情况比较特殊，返回的时候虽然引用了a，但引用的是a的指针，并不是对标识符a的引用，也就不会产生闭包
+debugger;
+console.log(obj)
+console.log(obj.b === c) // true
+```
+
+### 那么引用了外层函数变量的内层函数的执行上下文释放之后外层执行上下文会被释放的对吧？
+- 🤔那肯定的啊
 
 ## 2. 说一下你用过ES6那些语法？
 - 箭头函数，Promise，Proxy，Reflect，Class，
@@ -13,6 +43,25 @@
   - 1.箭头函数没有自己的this，this引用的是外层作用域的this
   - 2.箭头函数没有arguments参数
   - 3.箭头函数没有constructor构造函数，不能被`new`
+  - 4.箭头函数只能是函数表达式定义无法被函数声明定义
+  - 5.基于上一条，表达式创建的箭头函数即使.bind，apply或call强行绑定this也无效
+
+```js
+let a = () => {
+  console.log(this.age)
+}
+
+function b(){
+  console.log(this.age)
+}
+
+let obj = {age: 12}
+
+a.call(obj) // undefined
+b.call(obj) // 12
+
+let c = new a() // ! TypeError: a is not a constructor
+```
 
 ### 那么说一下Promise的三种状态和关系吧？
 - 三种状态：`PENDING`，`FULFILLED`，`REJECTED`
@@ -26,13 +75,16 @@
 - 其实会执行，但是没有value值传入，参见[01.Promise.finally测试](./01.Promise.finally测试.js)
 
 ## 3. 说一下垃圾回收？
-- tips：引入计数，标记清除，新生代老生代，碎片整理，weakmap和map区别
+- tips：引入计数，标记清除，新生代老生代，碎片整理，weakmap和map区别，参考[weakMap测试](../frontend/../../frontend/垃圾回收机制/01.weakMap-gc-test.js)
 
 ## 4.实现一个对象的拷贝怎么做？
 - 浅拷贝：{...obj}或者循环obj的key手动拷贝
 - tips:JSON.parset(JSON.stringify(obj))；lodash的深拷贝；自己封装个深拷贝
 
 ### 如果让你实现一个深拷贝，你有什么思路？
+
+- 简单类型直接返回；复杂类型递归拷贝
+- 循环引用使用map方式处理
 
 ### 如果一个对象我就想JSON.stringify()它，但它还是循环引用的，那你需要怎么处理？
 - tips：第二个参数可以做一下过滤（map）
@@ -192,7 +244,45 @@ dispatchEvent：处理连续事件
 
 > fiber节点的生命周期？fiber架构渲染共有几个阶段？
 
+- 协调阶段：Reconciliation（也叫render）
+  - 目的：确定需要在UI中更新的内容
+  - 代码实质：得到标记了副作用的Fiber节点树。副作用描述了在下一个commit阶段需要完成的工作。
+  - 这一过程可中断。事实上React通过时间分片的方式来处理一个或多个Fiber节点，从而赋予对正在做的工作以暂停，恢复，撤销重做的能力。这一阶段的工作对用户始终不可见。
+- 提交阶段：Commit阶段
+  - 目的：更新UI，对DOM应用上一个过程得到的patch结果。
+  - 代码实质：已经得到了标记了副作用的的Fiber节点树，通过遍历副作用列表，根据副作用类型执行具体的副作用，包括DOM更新，生命周期函数调用，ref更新等一系列用户可见的UI变化。
+![](https://libin1991.github.io/2019/07/01/%E7%90%86%E8%A7%A3-React-Fiber-%E6%9E%B6%E6%9E%84/1.png)
+
 ### react的document捕获和普通HTML的捕获事件有什么区别？
+
+- 最大的区别：普通事件捕获挂载的是原生事件；react的事件捕获挂载的是一个事件包（syntheticEvent，包含事件本身和优先级标识，nativeEvent，predefault等属性）
+- 其次，普通HTML事件`return false;`即可阻止冒泡，react中的事件必须`e.stopPropagation();`才能阻止冒泡
+
+- react中事件特性
+  - react16版本之前，在异步事件中要先执行`e.persist()`才能获取到，v17 开始，e.persist() 将不再生效，因为 SyntheticEvent 不再放入事件池中。
+  - react17中取消了事件池概念
+  - 事件池：SyntheticEvent 对象会被放入池中统一管理。这意味着 SyntheticEvent 对象可以被复用，当所有事件处理函数被调用之后，其所有属性都会被置空。
+
+```js
+function handleChange(e) {
+  // Prevents React from resetting its properties:
+  e.persist(); // ! 确保异步事件中能正常获取到事件对象e
+
+  setTimeout(() => {
+    console.log(e.target.value); // Works
+  }, 100);
+}
+```
+
+- react组件上绑定事件会发生什么？
+  - 对大多数事件来说，React 实际上并不会将它们附加到 DOM 节点上。相反，React 会直接在 document 节点上为每种事件类型附加一个处理器。这被称为事件委托。
+  - 自从其发布以来，React 一直自动进行事件委托。当 document 上触发 DOM 事件时，React 会找出调用的组件，然后 React 事件会在组件中向上 “冒泡”。但实际上，原生事件已经冒泡出了 document 级别，React 在其中安装了事件处理器。
+- 为什么React17要将事件挂载到根节点而不是document上？
+  - 在 React 17 中，React 将不再向 document 附加事件处理器。而会将事件处理器附加到渲染 React 树的根 DOM 容器中：
+  - 在 React 16 或更早版本中，React 会对大多数事件执行 document.addEventListener()。React 17 将会在底层调用 rootNode.addEventListener()。
+  - 如果页面上有多个 React 版本，他们都将在顶层注册事件处理器。这会破坏 e.stopPropagation()：如果嵌套树结构中阻止了事件冒泡，但外部树依然能接收到它。这会使不同版本 React 嵌套变得困难重重。
+![](https://zh-hans.reactjs.org/static/bb4b10114882a50090b8ff61b3c4d0fd/1e088/react_17_delegation.png)
+
 
 ### react的事件是在render完毕才挂载的吗？
 - 不是，react的事件在commit阶段会被记录下来挂载到document/root上
