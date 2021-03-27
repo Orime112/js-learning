@@ -192,9 +192,6 @@ dispatchEvent：处理连续事件
 
 > fiber节点的生命周期？fiber架构渲染共有几个阶段？
 
-
-
-
 ### react的document捕获和普通HTML的捕获事件有什么区别？
 
 ### react的事件是在render完毕才挂载的吗？
@@ -226,5 +223,3 @@ class IncreasingCounter {
 ```
 
 ## 8. 编辑器项目里的东西
-
-mpx
