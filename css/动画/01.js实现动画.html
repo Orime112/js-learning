@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>长图片实现hover动画</title>
+    <style>
+      #animate {
+        background-image: url(https://img.alicdn.com/tfs/TB1qolSVhz1gK0jSZSgXXavwpXa-128-2688.png);
+        background-size: cover;
+        width: 56px;
+        height: 56px;
+        background-position-y: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="animate"></div>
+    <script>
+      const animate = document.getElementById("animate")
+      animate.addEventListener("mouseenter", function (e) {
+        console.log("mouseenter", e)
+        forward()
+      })
+      animate.addEventListener("mouseleave", function (e) {
+        console.log("mouseleave", e)
+        back()
+      })
+
+      // * 定时器方案
+      let i = 0
+      let timerStart = null
+      function forward() {
+        clearInterval(timerEnd)
+        timerStart = setInterval(() => {
+          if (
+            !parseInt(animate.style.backgroundPositionY) ||
+            parseInt(animate.style.backgroundPositionY) < 600
+          ) {
+            animate.style.backgroundPositionY = 56 * i++ + "px"
+          } else {
+            clearInterval(timerStart)
+          }
+        }, 100)
+      }
+      let timerEnd = null
+      function back() {
+        clearInterval(timerStart)
+        timerEnd = setInterval(() => {
+          console.log(
+            parseInt(animate.style.backgroundPositionY),
+            "parseInt(animate.style.backgroundPositionY)",
+            animate.style.backgroundPositionY
+          )
+          if ((parseInt(animate.style.backgroundPositionY) ?? 0) > 0) {
+            animate.style.backgroundPositionY = -56 * i-- + "px"
+          } else {
+            clearInterval(timerEnd)
+          }
+        }, 100)
+      }
+
+      // RAF方案
+
+      //   // * 动画开始
+      //   let index = 0
+      //   function forward() {
+      //     animate.style.backgroundPositionY = index++ * 56 + "px"
+      //     console.log("开始动画", parseInt(animate.style.backgroundPositionY))
+      //     if (parseInt(animate.style.backgroundPositionY) < 200) {
+      //       index = 0
+      //       requestAnimationFrame(forward)
+      //     }
+      //   }
+
+      //   // * 动画回退
+      //   let index1 = 0
+      //   function back() {
+      //     animate.style.backgroundPositionY = -index1++ * 56 + "px"
+      //     console.log("开始动画", parseInt(animate.style.backgroundPositionY))
+      //     if (parseInt(animate.style.backgroundPositionY) > 200) {
+      //       index1 = 0
+      //       requestAnimationFrame(back)
+      //     }
+      //   }
+    </script>
+  </body>
+</html>
