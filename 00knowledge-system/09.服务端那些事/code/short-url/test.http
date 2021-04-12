@@ -1,0 +1,10 @@
+POST http://localhost:3080/create
+Content-Type: application/json
+
+{
+  "url": "http://localhost:2323",
+  "slug": "测试短链"
+}
+
+### github测试
+GET http://github.com

@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import Clock from './Clock'
-import Hello from './Hello'
-import MouseTracker from './MouseTracker'
+import Clock from './pages/Clock'
+import Hello from './pages/Hello'
+import MouseTracker from './pages/MouseTracker'
 import useMousePosition from './hooks/useMousePosition'
 import useURLLoader from './hooks/useURLLoader'
-import LikeButton from './LikeButton'
-import UserImmer from './UserImmer'
+import LikeButton from './pages/LikeButton'
+import UserImmer from './pages/UserImmer'
 
 export interface IDogResult {
   message: string;
@@ -13,7 +13,7 @@ export interface IDogResult {
 }
 
 const App = () => {
-  const [ showTracker, setShowTracker ] = useState(true)
+  const [showTracker, setShowTracker] = useState(true)
 
   // * 使用自定义hook
   const position = useMousePosition()
@@ -30,7 +30,7 @@ const App = () => {
     {/* { showTracker && <MouseTracker />} */}
     { showTracker && <div>{`x:${position.x};y:${position.y}`}</div>}
     <button onClick={() => setShowTracker(!showTracker)}>Toggle Tracker</button>
-    {isLoading ? <p>🐶加载中</p> : <img style={{width: '50%', display: 'block'}} src={dogResult && dogResult.message} />}
+    {isLoading ? <p>🐶加载中</p> : <img style={{ width: '50%', display: 'block' }} src={dogResult && dogResult.message} />}
     <UserImmer />
   </>)
 }

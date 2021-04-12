@@ -8,7 +8,7 @@ module.exports = {
     // index: "./src/testIndex.tsx",
     index: "./src/index.tsx",
   },
-  devtool: "eval-cheap-module-source-map",
+  devtool: "cheap-module-source-map",
   devServer: {
     open: true,
     port: 9000,
@@ -24,13 +24,16 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [{
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-react", "@babel/preset-typescript"],
-            // presets: ["@babel/preset-react"], // ! 会报错，ts中的as语法不让用
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-react", "@babel/preset-typescript"],
+              // presets: ["@babel/preset-react"], // ! 会报错，ts中的as语法不让用
+            },
           },
-        }, 'ts-loader'],
+          "ts-loader",
+        ],
       },
       {
         test: /\.css$/,
