@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>绘制复杂图形</title>
+    <style>
+      .icon {
+        display: inline-block;
+        width: 0;
+        font-size: 0;
+        position: relative;
+        margin-right: 20px;
+      }
+      .star {
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 100px solid brown;
+      }
+      .star::after {
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-top: 100px solid brown;
+        position: absolute;
+        content: "";
+        top: 30px;
+        left: -50px;
+      }
+      .arrow {
+        width: 40px;
+        height: 40px;
+        margin: 0 40px;
+        background-color: red;
+      }
+      .arrow::before {
+        position: absolute;
+        content: "";
+        left: -40px;
+        border: solid 20px red;
+        border-left-color: transparent;
+      }
+      .arrow::after {
+        position: absolute;
+        content: "";
+        right: -40px;
+        border: 20px solid transparent;
+        border-left-color: red;
+      }
+      .pacman {
+        width: 0;
+        height: 0;
+        border: 40px solid red;
+        border-radius: 50%;
+        border-right-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="icon star"></div>
+    <div class="icon arrow"></div>
+    <div class="icon pacman"></div>
+  </body>
+</html>

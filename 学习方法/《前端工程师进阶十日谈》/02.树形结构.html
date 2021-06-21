@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>树形结构演示案例</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
+
+      ul {
+        /* list-style: url('https://p5.ssl.qhimg.com/t018438001db494c5f3.png'); */
+        list-style: none;
+      }
+
+      li.expand {
+        /* list-style: url("https://p4.ssl.qhimg.com/t0167b045701562f010.png"); */
+        list-style: none;
+      }
+      .tree li > ul {
+        display: none;
+        transition: all 0.5s ease;
+      }
+
+      .tree li.expand > ul {
+        display: block;
+        transition: all 0.5s ease;
+      }
+      .tree li::before {
+        color: #999;
+        content: "";
+        display: inline-block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 6px 10.4px;
+        border-color: transparent;
+        border-left-color: currentColor;
+        transform: translateX(6px);
+      }
+      .tree li.expand::before {
+        transform: rotate(90deg) translateX(6px);
+      }
+    </style>
+  </head>
+  <body>
+    <ul class="tree">
+      <li>项目1</li>
+      <li>项目2</li>
+      <li class="expand">
+        项目3
+        <ul>
+          <li>子项3.1</li>
+          <li>子项3.2</li>
+          <li>子项3.3</li>
+        </ul>
+      </li>
+      <li>
+        项目4
+        <ul>
+          <li>子项4.1</li>
+          <li>子项4.2</li>
+        </ul>
+      </li>
+      <li>项目5</li>
+    </ul>
+    <script>
+      const tree = document.querySelector(".tree");
+      tree.addEventListener("click", (event) => {
+        console.log(event.target.tagName);
+        if (event.target.tagName === "LI") {
+          if (event.target.className === "expand") {
+            event.target.className = "";
+          } else {
+            event.target.className = "expand";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
